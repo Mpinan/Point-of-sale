@@ -1,0 +1,23 @@
+#tables {
+  display: inline-flex;
+}
+
+#container {
+  width: 50%;
+}
+
+/* #containerRight {
+  width: 50%;
+} */
+
+#left {
+  float: left;
+}
+
+#right {
+  float: right;
+}
+
+.margin {
+  margin: 2px;
+}
