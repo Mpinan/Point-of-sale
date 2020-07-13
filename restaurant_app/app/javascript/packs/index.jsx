@@ -5,8 +5,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "../pos/src/App";
-// import "bootstrap";
-// import "reactstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 document.addEventListener("DOMContentLoaded", () => {
   ReactDOM.render(
