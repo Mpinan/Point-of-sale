@@ -9,7 +9,7 @@ class SignupController < ApplicationController
         )
         
         if user
-            session[:user_id] = user.user_id
+            session[:user_id] = user.id
             render json: {
                 status: :created,
                 user: user
