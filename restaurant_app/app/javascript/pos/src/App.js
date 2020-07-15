@@ -3,8 +3,8 @@ import React, { Component } from "react";
 import "./App.css";
 
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-// import Dashboard from "./dashboard";
 import Home from "./Components/home";
+import Dashboard from "./Components/User/dashboard";
 
 class App extends Component {
   constructor() {
@@ -26,7 +26,13 @@ class App extends Component {
                 <Home {...props} userStatus={this.state.userStatus} />
               )}
             />
-            {/* <Route exact path={"/dashboard"} component={Dashboard} /> */}
+            <Route
+              exact
+              path={"/dashboard"}
+              render={(props) => (
+                <Dashboard {...props} userStatus={this.state.userStatus} />
+              )}
+            />
           </Switch>
         </BrowserRouter>
       </div>
