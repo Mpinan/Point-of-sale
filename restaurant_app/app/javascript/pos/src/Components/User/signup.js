@@ -48,6 +48,8 @@ class Signup extends Component {
         { withCredentials: true }
       )
       .then((response) => {
+        if (response.data.status == "created") {
+        }
         this.props.handleSignUp(response.data);
       })
       .catch((error) => {
