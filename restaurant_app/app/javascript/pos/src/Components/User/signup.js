@@ -48,7 +48,7 @@ class Signup extends Component {
         { withCredentials: true }
       )
       .then((response) => {
-        console.log("response", response);
+        this.props.handleSignUp(response.data);
       })
       .catch((error) => {
         console.log("error", error);
