@@ -10,14 +10,12 @@ import {
   Button,
 } from "reactstrap";
 
-class Signup extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
       email: "",
       password: "",
-      password_confirmation: "",
-      pin: "",
       errors: "",
     };
 
@@ -33,22 +31,20 @@ class Signup extends Component {
   }
 
   handleSubmit(e) {
-    const { email, password, password_confirmation, pin, errors } = this.state;
+    const { email, password } = this.state;
     axios
       .post(
-        "http://localhost:3000/signup",
+        "http://localhost:3000/sessions",
         {
           user: {
             email: email,
             password: password,
-            password_confirmation: password_confirmation,
-            pin: pin,
           },
         },
         { withCredentials: true }
       )
       .then((response) => {
-        if (response.data.status == "created") {
+        if (response.data.logged_in) {
         }
         this.props.handleRedirect(response.data);
       })
@@ -94,41 +90,11 @@ class Signup extends Component {
               />
             </Col>
           </FormGroup>
-          <FormGroup row>
-            <Label for="exampleEmail2" sm={2}>
-              Confirm password
-            </Label>
-            <Col sm={10}>
-              <Input
-                type="password"
-                name="password_confirmation"
-                placeholder="Confirm password"
-                value={password_confirmation}
-                onChange={this.handleChange}
-                required
-              />
-            </Col>
-          </FormGroup>
-          <FormGroup row>
-            <Label for="exampleEmail2" sm={2}>
-              Write pin number
-            </Label>
-            <Col sm={10}>
-              <Input
-                type="password"
-                name="pin"
-                placeholder="example 123456789"
-                value={pin}
-                onChange={this.handleChange}
-                required
-              />
-            </Col>
-          </FormGroup>
-          <Button type="submit">Sign Up</Button>
+          <Button type="submit">Login</Button>
         </Form>
       </Container>
     );
   }
 }
 
-export default Signup;
+export default Login;

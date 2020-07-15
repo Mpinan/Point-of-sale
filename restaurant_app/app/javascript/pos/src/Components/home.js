@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import Signup from "./User/signup";
+import Login from "./User/login";
 
 class Home extends Component {
   constructor(props) {
     super(props);
-    this.handleSignUp = this.handleSignUp.bind(this);
+    this.handleRedirect = this.handleRedirect.bind(this);
   }
 
-  handleSignUp(data) {
+  handleRedirect(data) {
     this.props.handleLogin(data);
     this.props.history.push("/dashboard");
   }
@@ -17,7 +18,8 @@ class Home extends Component {
       <div>
         <h1>Home</h1>
         <h1>Status: {this.props.userStatus}</h1>
-        <Signup handleSignUp={this.handleSignUp} />
+        <Signup handleRedirect={this.handleRedirect} />
+        <Login handleRedirect={this.handleRedirect} />
       </div>
     );
   }
