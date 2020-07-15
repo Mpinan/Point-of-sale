@@ -13,7 +13,13 @@ class App extends Component {
       userStatus: "NOT_LOGGED_IN",
       user: {},
     };
+    this.handleLogin = this.handleLogin.bind(this);
   }
+
+  handleLogin(data) {
+    this.setState({ userStatus: "LOGGED_IN", user: data.user });
+  }
+
   render() {
     return (
       <div className="App">
@@ -23,7 +29,11 @@ class App extends Component {
               exact
               path={"/"}
               render={(props) => (
-                <Home {...props} userStatus={this.state.userStatus} />
+                <Home
+                  {...props}
+                  handleLogin={this.handleLogin}
+                  userStatus={this.state.userStatus}
+                />
               )}
             />
             <Route

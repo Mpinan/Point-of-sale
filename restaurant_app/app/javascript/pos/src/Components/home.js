@@ -8,6 +8,7 @@ class Home extends Component {
   }
 
   handleSignUp(data) {
+    this.props.handleLogin(data);
     this.props.history.push("/dashboard");
   }
 

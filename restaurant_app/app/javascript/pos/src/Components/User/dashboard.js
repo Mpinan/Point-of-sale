@@ -10,6 +10,7 @@ class Dashboard extends Component {
     return (
       <div>
         <h1>Dashboard</h1>
+        <h1>{this.props.userStatus}</h1>
       </div>
     );
   }
