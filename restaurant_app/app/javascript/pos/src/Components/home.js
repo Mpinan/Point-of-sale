@@ -6,12 +6,17 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 class Home extends Component {
   constructor(props) {
     super(props);
-
+    this.state = {
+      modal: false,
+    };
     this.handleRedirect = this.handleRedirect.bind(this);
-    const [modal, setModal] = useState(false);
-
-    const toggle = () => setModal(!modal);
   }
+
+  handleModal = () => {
+    this.setState({
+      modal: !this.state.modal,
+    });
+  };
 
   handleRedirect(data) {
     this.props.handleLogin(data);
@@ -19,15 +24,16 @@ class Home extends Component {
   }
 
   render() {
+    const { modal } = this.state;
     return (
       <div>
         <h1>Home</h1>
         <h1>Status: {this.props.userStatus}</h1>
-        <Button color="danger" onClick={toggle}>
-          {buttonLabel}
+        <Button color="danger" onClick={this.handleModal}>
+          Log in
         </Button>
-        <Modal isOpen={modal} toggle={toggle} className={className}>
-          <ModalHeader toggle={toggle}>Modal title</ModalHeader>
+        <Modal isOpen={modal} toggle={this.handleModal}>
+          <ModalHeader toggle={this.handleModal}>Modal title</ModalHeader>
           <ModalBody>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
@@ -38,10 +44,10 @@ class Home extends Component {
             culpa qui officia deserunt mollit anim id est laborum.
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={toggle}>
-              Do Something
+            <Button color="primary" onClick={this.handleModal}>
+              Submit
             </Button>{" "}
-            <Button color="secondary" onClick={toggle}>
+            <Button color="secondary" onClick={this.handleModal}>
               Cancel
             </Button>
           </ModalFooter>
