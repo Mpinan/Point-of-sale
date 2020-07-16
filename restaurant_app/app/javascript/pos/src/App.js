@@ -15,6 +15,7 @@ class App extends Component {
       user: {},
     };
     this.handleLogin = this.handleLogin.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   handleUserStatus() {
@@ -42,6 +43,13 @@ class App extends Component {
 
   componentDidMount() {
     this.handleUserStatus();
+  }
+
+  handleLogout() {
+    this.setState({
+      userStatus: "NOT_LOGGED_IN",
+      user: {},
+    });
   }
 
   render() {
