@@ -7,14 +7,21 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: false,
+      modalLogin: false,
+      modalSignUp: false,
     };
     this.handleRedirect = this.handleRedirect.bind(this);
   }
 
-  handleModal = () => {
+  handleLogInModal = () => {
     this.setState({
-      modal: !this.state.modal,
+      modalLogin: !this.state.modalLogin,
+    });
+  };
+
+  handleSignUpModal = () => {
+    this.setState({
+      modalSignUp: !this.state.modalSignUp,
     });
   };
 
@@ -24,37 +31,45 @@ class Home extends Component {
   }
 
   render() {
-    const { modal } = this.state;
+    const { modalSignUp, modalLogin } = this.state;
     return (
       <div>
         <h1>Home</h1>
         <h1>Status: {this.props.userStatus}</h1>
-        <Button color="danger" onClick={this.handleModal}>
-          Log in
+        <Button color="danger" onClick={this.handleSignUpModal}>
+          Sign Up
         </Button>
-        <Modal isOpen={modal} toggle={this.handleModal}>
-          <ModalHeader toggle={this.handleModal}>Modal title</ModalHeader>
+        <Modal isOpen={modalSignUp} toggle={this.handleSignUpModal}>
+          <ModalHeader toggle={this.handleSignUpModal}>Modal title</ModalHeader>
           <ModalBody>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
+            <Signup handleRedirect={this.handleRedirect} />
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.handleModal}>
+            <Button color="primary" onClick={this.handleSignUpModal}>
               Submit
             </Button>{" "}
-            <Button color="secondary" onClick={this.handleModal}>
+            <Button color="secondary" onClick={this.handleSignUpModal}>
               Cancel
             </Button>
           </ModalFooter>
         </Modal>
-
-        <Signup handleRedirect={this.handleRedirect} />
-        <Login handleRedirect={this.handleRedirect} />
+        <Button color="danger" onClick={this.handleLogInModal}>
+          Log in
+        </Button>
+        <Modal isOpen={modalLogin} toggle={this.handleLogInModal}>
+          <ModalHeader toggle={this.handleLogInModal}>Modal title</ModalHeader>
+          <ModalBody>
+            <Login handleRedirect={this.handleRedirect} />
+          </ModalBody>
+          <ModalFooter>
+            <Button color="primary" onClick={this.handleLogInModal}>
+              Submit
+            </Button>{" "}
+            <Button color="secondary" onClick={this.handleLogInModal}>
+              Cancel
+            </Button>
+          </ModalFooter>
+        </Modal>
       </div>
     );
   }
