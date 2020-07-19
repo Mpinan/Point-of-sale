@@ -11,6 +11,7 @@ class Home extends Component {
       modalSignUp: false,
     };
     this.handleRedirect = this.handleRedirect.bind(this);
+    this.handleLogOutClick = this.handleLogOutClick.bind(this);
   }
 
   handleLogInModal = () => {
@@ -30,13 +31,17 @@ class Home extends Component {
     this.props.history.push("/dashboard");
   }
 
+  handleLogOutClick() {
+    this.props.handleLogout();
+  }
+
   render() {
     const { modalSignUp, modalLogin } = this.state;
     return (
       <div>
         <h1>Home</h1>
         <h1>Status: {this.props.userStatus}</h1>
-        <Button color="danger" onClick={this.handleSignUpModal}>
+        <Button color="info" onClick={this.handleSignUpModal}>
           Sign Up
         </Button>
         <Modal isOpen={modalSignUp} toggle={this.handleSignUpModal}>
@@ -53,9 +58,18 @@ class Home extends Component {
             </Button>
           </ModalFooter>
         </Modal>
-        <Button color="danger" onClick={this.handleLogInModal}>
+        {this.props.userStatus === "LOGGED_IN" ? (
+          <Button color="danger" onClick={() => this.handleLogOutClick()}>
+            Log out
+          </Button>
+        ) : (
+          <Button color="info" onClick={this.handleLogInModal}>
+            Log in
+          </Button>
+        )}
+        {/* <Button color="danger" onClick={this.handleLogInModal}>
           Log in
-        </Button>
+        </Button> */}
         <Modal isOpen={modalLogin} toggle={this.handleLogInModal}>
           <ModalHeader toggle={this.handleLogInModal}>Modal title</ModalHeader>
           <ModalBody>

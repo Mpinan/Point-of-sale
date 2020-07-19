@@ -64,6 +64,7 @@ class App extends Component {
                 <Home
                   {...props}
                   handleLogin={this.handleLogin}
+                  handleLogout={this.handleLogout}
                   userStatus={this.state.userStatus}
                 />
               )}
