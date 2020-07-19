@@ -1,4 +1,5 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
+import axios from "axios";
 import Signup from "./User/signup";
 import Login from "./User/login";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
@@ -32,7 +33,14 @@ class Home extends Component {
   }
 
   handleLogOutClick() {
-    this.props.handleLogout();
+    axios
+      .delete("http://localhost:3000/logout", { withCredentials: true })
+      .then((response) => {
+        this.props.handleLogout();
+      })
+      .catch((error) => {
+        console.log("logout error", error);
+      });
   }
 
   render() {
