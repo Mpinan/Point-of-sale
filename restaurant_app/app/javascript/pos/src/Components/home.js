@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import axios from "axios";
 import Signup from "./User/signup";
 import Login from "./User/login";
-// import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import ModalPopUp from "./modals";
 
 class Home extends Component {
@@ -29,11 +28,14 @@ class Home extends Component {
   }
 
   render() {
-    const { modalSignUp, modalLogin } = this.state;
+    // const { modalSignUp, modalLogin } = this.state;
     return (
       <div>
         <h1>Home</h1>
-        <h1>Status: {this.props.userStatus}</h1>
+        <h1>
+          Status: {this.props.userStatus}
+          {console.log(this.props)}
+        </h1>
         <ModalPopUp />
       </div>
     );
