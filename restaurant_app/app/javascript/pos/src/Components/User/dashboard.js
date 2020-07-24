@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Pin from "./pinPage";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -15,6 +16,8 @@ class Dashboard extends Component {
       <div>
         <h1>Dashboard</h1>
         <h1>Status: {this.props.userStatus}</h1>
+        {console.log(this.props)}
+        <Pin />
       </div>
     );
   }
