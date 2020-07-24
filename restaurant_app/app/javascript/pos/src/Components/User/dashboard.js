@@ -4,11 +4,12 @@ import Pin from "./pinPage";
 class Dashboard extends Component {
   constructor(props) {
     super(props);
-    this.handleSignUp = this.handleSignUp.bind(this);
+    this.handleRedirect = this.handleRedirect.bind(this);
   }
 
-  handleSignUp(data) {
-    this.props.history.push("/dashboard");
+  handleRedirect() {
+    console.log(this.props);
+    this.props.history.push("/mainpage");
   }
 
   render() {
@@ -17,7 +18,7 @@ class Dashboard extends Component {
         <h1>Dashboard</h1>
         <h1>Status: {this.props.userStatus}</h1>
         {console.log(this.props)}
-        <Pin />
+        <Pin userPin={this.props.user.pin} redirect={this.handleRedirect} />
       </div>
     );
   }

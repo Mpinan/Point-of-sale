@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-
+import axios from "axios";
 import "./App.css";
-
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+
 import Home from "./Components/home";
 import Dashboard from "./Components/User/dashboard";
-import axios from "axios";
+import MainPage from "./Components/mainpage";
+import Pin from "./Components/User/pinPage";
 
 class App extends Component {
   constructor() {
@@ -73,7 +74,22 @@ class App extends Component {
               exact
               path={"/dashboard"}
               render={(props) => (
-                <Dashboard {...props} userStatus={this.state.userStatus} />
+                <Dashboard
+                  {...props}
+                  user={this.state.user}
+                  userStatus={this.state.userStatus}
+                />
+              )}
+            />
+            <Route
+              exact
+              path={"/mainpage"}
+              render={(props) => (
+                <MainPage
+                  {...props}
+                  user={this.state.user}
+                  userStatus={this.state.userStatus}
+                />
               )}
             />
           </Switch>
