@@ -124,7 +124,14 @@ class Signup extends Component {
               />
             </Col>
           </FormGroup>
-          <Button type="submit">Sign Up</Button>
+
+          <Button id="buttons" type="submit">
+            Sign Up
+          </Button>
+          <Button id="buttons" onClick={this.props.cancelModal}>
+            {" "}
+            Cancel
+          </Button>
         </Form>
       </Container>
     );

@@ -6,10 +6,6 @@
   width: 50%;
 }
 
-/* #containerRight {
-  width: 50%;
-} */
-
 #left {
   float: left;
 }
@@ -20,4 +16,8 @@
 
 .margin {
   margin: 2px;
+}
+
+#buttons {
+  margin: 5px;
 }

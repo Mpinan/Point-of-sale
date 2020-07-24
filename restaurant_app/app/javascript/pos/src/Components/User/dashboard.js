@@ -15,7 +15,6 @@ class Dashboard extends Component {
       <div>
         <h1>Dashboard</h1>
         <h1>Status: {this.props.userStatus}</h1>
-        <Signup />
       </div>
     );
   }

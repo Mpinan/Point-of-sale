@@ -28,12 +28,16 @@ class ModalPopUp extends Component {
     const { modalSignUp, modalLogin } = this.state;
     return (
       <div>
-        {this.props.userStatus === "LOGGED_IN" ? (
-          <Button color="danger" onClick={() => this.handleLogOutClick()}>
+        {this.props.status === "LOGGED_IN" ? (
+          <Button
+            id="buttons"
+            color="danger"
+            onClick={() => this.props.handleLogOutClick()}
+          >
             Log out
           </Button>
         ) : (
-          <Button color="info" onClick={this.handleLogInModal}>
+          <Button id="buttons" color="info" onClick={this.handleLogInModal}>
             Log in
           </Button>
         )}
@@ -44,38 +48,21 @@ class ModalPopUp extends Component {
         <Modal isOpen={modalSignUp} toggle={this.handleSignUpModal}>
           <ModalHeader toggle={this.handleSignUpModal}>Sign up</ModalHeader>
           <ModalBody>
-            <Signup handleRedirect={this.handleRedirect} />
+            <Signup
+              id="buttons"
+              handleRedirect={this.props.redirect}
+              cancelModal={this.handleSignUpModal}
+            />
           </ModalBody>
-          <ModalFooter>
-            <Button
-              type="submit"
-              color="primary"
-              onClick={this.handleSignUpModal}
-            >
-              Submit
-            </Button>
-            <Button color="secondary" onClick={this.handleSignUpModal}>
-              Cancel
-            </Button>
-          </ModalFooter>
         </Modal>
         <Modal isOpen={modalLogin} toggle={this.handleLogInModal}>
           <ModalHeader toggle={this.handleLogInModal}>Log in</ModalHeader>
           <ModalBody>
-            <Login handleRedirect={this.handleRedirect} />
+            <Login
+              handleRedirect={this.props.redirect}
+              cancelModal={this.handleSignUpModal}
+            />
           </ModalBody>
-          <ModalFooter>
-            <Button
-              type="submit"
-              color="primary"
-              onClick={this.handleLogInModal}
-            >
-              Submit
-            </Button>
-            <Button color="secondary" onClick={this.handleLogInModal}>
-              Cancel
-            </Button>
-          </ModalFooter>
         </Modal>
       </div>
     );

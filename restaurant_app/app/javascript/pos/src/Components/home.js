@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Signup from "./User/signup";
-import Login from "./User/login";
 import ModalPopUp from "./modals";
 
 class Home extends Component {
@@ -36,7 +34,11 @@ class Home extends Component {
           Status: {this.props.userStatus}
           {console.log(this.props)}
         </h1>
-        <ModalPopUp />
+        <ModalPopUp
+          status={this.props.userStatus}
+          handleLogOutClick={this.handleLogOutClick}
+          redirect={this.handleRedirect}
+        />
       </div>
     );
   }

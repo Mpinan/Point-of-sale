@@ -90,7 +90,14 @@ class Login extends Component {
               />
             </Col>
           </FormGroup>
-          <Button type="submit">Login</Button>
+
+          <Button id="buttons" type="submit">
+            Login
+          </Button>
+          <Button id="buttons" onClick={this.props.cancelModal}>
+            {" "}
+            Cancel
+          </Button>
         </Form>
       </Container>
     );
