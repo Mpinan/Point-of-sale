@@ -5,7 +5,6 @@ import MainPage from "../mainpage";
 class Pin extends React.PureComponent {
   constructor(props) {
     super(props);
-    // this.handleRedirect = this.handleRedirect.bind(this);
   }
   state = {
     value: "",
@@ -15,11 +14,6 @@ class Pin extends React.PureComponent {
   onChange = (value) => {
     this.setState({ value });
   };
-
-  //   handleRedirect() {
-  //     console.log(this.props);
-  //     this.props.history.push("/mainpage");
-  //   }
 
   onClear = () => {
     this.setState({
