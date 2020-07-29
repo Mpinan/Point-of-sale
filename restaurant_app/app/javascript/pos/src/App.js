@@ -60,7 +60,7 @@ class App extends Component {
           <Switch>
             <Route
               exact
-              path={"/"}
+              path={"/home"}
               render={(props) => (
                 <Home
                   {...props}
@@ -72,7 +72,7 @@ class App extends Component {
             />
             <Route
               exact
-              path={"/dashboard"}
+              path={"/"}
               render={(props) => (
                 <Dashboard
                   {...props}

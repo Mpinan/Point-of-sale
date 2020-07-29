@@ -11,7 +11,7 @@ class Home extends Component {
 
   handleRedirect(data) {
     this.props.handleLogin(data);
-    this.props.history.push("/dashboard");
+    this.props.history.push("/");
   }
 
   handleLogOutClick() {

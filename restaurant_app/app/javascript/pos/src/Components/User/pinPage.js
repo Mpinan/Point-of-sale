@@ -1,6 +1,5 @@
 import React from "react";
 import PinInput from "react-pin-input";
-import MainPage from "../mainpage";
 
 class Pin extends React.PureComponent {
   constructor(props) {
@@ -36,7 +35,6 @@ class Pin extends React.PureComponent {
           length={5}
           focus
           required
-          // disabled
           secret
           ref={(p) => (this.pin = p)}
           type="numeric"
