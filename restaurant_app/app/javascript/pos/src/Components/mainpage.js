@@ -6,6 +6,7 @@ import ItemsList from "./Item/src/itemsList";
 import ItemModal from "./Item/src/itemModal";
 import { getTables } from "./services/fakeTables";
 import { getItems } from "./services/fakeItems";
+import "./stylesheets/tables";
 
 class MainPage extends Component {
   state = {
@@ -44,9 +45,9 @@ class MainPage extends Component {
 
     return (
       <div>
-        <div id="tables">
+        <div className="tables">
           {listOfTables.map((table, i) => (
-            <div className="margin" key={i}>
+            <div className="margin eachtable" key={i}>
               <DinningTable
                 isBusy={this.state.isBusy}
                 key={i}

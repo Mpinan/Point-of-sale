@@ -23,10 +23,10 @@ class DinningTable extends Component {
     return (
       <div>
         <div
-          style={{
-            margin: "10px",
-            padding: "15px",
-          }}
+        // style={{
+        //   margin: "10px",
+        //   padding: "15px",
+        // }}
         >
           <button
             style={{

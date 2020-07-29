@@ -1,0 +1,11 @@
+.tables {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.tables .eachtable {
+  flex: 1 1 15px;
+  flex: 0-1 15px;
+  margin: 5px;
+}
