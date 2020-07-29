@@ -1,5 +1,7 @@
 import React from "react";
 import PinInput from "react-pin-input";
+import "../stylesheets/pinPage.scss";
+import { Button } from "reactstrap";
 
 class Pin extends React.PureComponent {
   constructor(props) {
@@ -7,7 +9,7 @@ class Pin extends React.PureComponent {
   }
   state = {
     value: "",
-    pin: "12345",
+    error: "",
   };
 
   onChange = (value) => {
@@ -18,21 +20,23 @@ class Pin extends React.PureComponent {
     this.setState({
       value: "",
     });
-    console.log(this.state.value);
-    console.log(this.props);
-    if (this.state.value === this.state.pin) {
-      console.log(this.props);
+    this.pin.clear();
+  };
+
+  onSubmit = () => {
+    console.log(this.props.userPin);
+    if (this.state.value === this.props.userPin) {
       this.props.redirect();
     } else {
-      console.log("wrong pin");
+      this.setState({ error: "Wrong pin" });
     }
   };
 
   render() {
     return (
-      <div className="app">
+      <div className="pinPage">
         <PinInput
-          length={5}
+          length={8}
           focus
           required
           secret
@@ -40,7 +44,13 @@ class Pin extends React.PureComponent {
           type="numeric"
           onChange={this.onChange}
         />
-        <button onClick={this.onClear}>Clear</button>
+        {this.state.error && (
+          <div className="alert alert-danger error">{this.state.error}</div>
+        )}
+        <div className="button">
+          <Button onClick={this.onSubmit}>Submit</Button>
+          <Button onClick={this.onClear}>Clear</Button>
+        </div>
       </div>
     );
   }
