@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./stylesheets/tables";
 
 class DinningTable extends Component {
   constructor(props) {
@@ -22,24 +23,17 @@ class DinningTable extends Component {
 
     return (
       <div>
-        <div
-        // style={{
-        //   margin: "10px",
-        //   padding: "15px",
-        // }}
+        <button
+          style={{
+            width: 100,
+            height: 100,
+          }}
+          className={isBusy() ? "btn-lg btn-danger" : "btn-lg btn-primary"}
+          id="book-table"
+          onClick={selectTable}
         >
-          <button
-            style={{
-              width: 100,
-              height: 100,
-            }}
-            className={isBusy() ? "btn-lg btn-danger" : "btn-lg btn-primary"}
-            id="book-table"
-            onClick={selectTable}
-          >
-            {this.props.number}
-          </button>
-        </div>
+          {this.props.number}
+        </button>
       </div>
     );
   }

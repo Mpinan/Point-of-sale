@@ -10,10 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_09_094330) do
+ActiveRecord::Schema.define(version: 2020_07_30_104906) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "items", force: :cascade do |t|
+    t.string "name"
+    t.string "itemType"
+    t.string "allergens"
+    t.string "description"
+    t.string "price"
+    t.bigint "table_id"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["table_id"], name: "index_items_on_table_id"
+    t.index ["user_id"], name: "index_items_on_user_id"
+  end
+
+  create_table "tables", force: :cascade do |t|
+    t.string "tableNumber"
+    t.string "tableCustomers"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_tables_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email"
@@ -23,4 +46,5 @@ ActiveRecord::Schema.define(version: 2020_07_09_094330) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "tables", "users"
 end
